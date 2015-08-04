@@ -1,0 +1,11 @@
+{
+  "name": "angular2",
+  "version": "0.0.0",
+  "description": "Playground with angular2",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vidal Julien",
+  "license": "ISC"
+}
