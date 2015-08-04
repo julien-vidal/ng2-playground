@@ -11,19 +11,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var angular2_1 = require('angular2/angular2');
+var pokemonDataService_1 = require('pokemonDataService');
 // Annotation section
 var MyAppComponent = (function () {
-    function MyAppComponent() {
-        this.name = 'Alice';
+    function MyAppComponent(pokemonDataService) {
+        this.pokemonDataService = pokemonDataService;
+        this.pokemonDataService.getPokedex().subscribe(function (pokedex) { return console.log(pokedex); });
     }
     MyAppComponent = __decorate([
         angular2_1.Component({
-            selector: 'my-app'
+            selector: 'my-app',
+            appInjector: [pokemonDataService_1.PokemonDataService]
         }),
         angular2_1.View({
             template: '<h1>Hello {{ name }}</h1>'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [pokemonDataService_1.PokemonDataService])
     ], MyAppComponent);
     return MyAppComponent;
 })();
