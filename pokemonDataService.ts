@@ -1,13 +1,11 @@
-import {Injectable, bind} from 'angular2/di';
-import {Http, httpInjectables} from 'angular2/http';
 import {LocalstorageService} from 'localstorageService';
 
-@Injectable()
-export class PokemonDataService{
+export class PokemonDataService {
   lsService:any;
-  $http:any;
+  //$http:any;
 
   //constructor($http: Http, lsService: LocalstorageService){
+  //constructor(lsService: LocalstorageService){
   constructor(lsService: LocalstorageService){
     //this.$http = $http;
     this.lsService = lsService;

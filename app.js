@@ -1,5 +1,5 @@
 /// <reference path="typings/angular2/angular2.d.ts" />
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+if (typeof __decorate !== "function") __decorate = function (decorators, target, key, desc) {
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
     switch (arguments.length) {
         case 2: return decorators.reduceRight(function(o, d) { return (d && d(o)) || o; }, target);
@@ -7,16 +7,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
         case 4: return decorators.reduceRight(function(o, d) { return (d && d(target, key, o)) || o; }, desc);
     }
 };
-var __metadata = (this && this.__metadata) || function (k, v) {
+if (typeof __metadata !== "function") __metadata = function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var angular2_1 = require('angular2/angular2');
 var pokemonDataService_1 = require('pokemonDataService');
 // Annotation section
 var MyAppComponent = (function () {
-    function MyAppComponent(pokemonDataService) {
-        this.pokemonDataService = pokemonDataService;
-        this.pokemonDataService.getPokedex().subscribe(function (pokedex) { return console.log(pokedex); });
+    //constructor(pokemonDataService: PokemonDataService) {
+    function MyAppComponent() {
+        //this.pokemonDataService = pokemonDataService;
+        //this.pokemonDataService.getPokedex().subscribe(pokedex => console.log(pokedex));
     }
     MyAppComponent = __decorate([
         angular2_1.Component({
@@ -26,7 +27,7 @@ var MyAppComponent = (function () {
         angular2_1.View({
             template: '<h1>Hello {{ name }}</h1>'
         }), 
-        __metadata('design:paramtypes', [pokemonDataService_1.PokemonDataService])
+        __metadata('design:paramtypes', [])
     ], MyAppComponent);
     return MyAppComponent;
 })();

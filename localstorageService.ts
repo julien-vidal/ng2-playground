@@ -1,6 +1,3 @@
-import {Injectable, bind} from 'angular2/di';
-
-@Injectable()
 export class LocalstorageService {
   ls:any;
 

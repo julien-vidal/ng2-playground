@@ -2,10 +2,11 @@
 
 import {Component, View, bootstrap} from 'angular2/angular2';
 import {PokemonDataService} from 'pokemonDataService';
+import {LocalstorageService} from 'localstorageService';
 
 // Annotation section
 @Component({
-  selector: 'my-app',
+  selector: 'my-app' ,
   appInjector: [PokemonDataService]
 })
 @View({
@@ -15,9 +16,10 @@ import {PokemonDataService} from 'pokemonDataService';
 class MyAppComponent {
   pokemonDataService:any;
 
-  constructor(pokemonDataService: PokemonDataService) {
-    this.pokemonDataService = pokemonDataService;
-    this.pokemonDataService.getPokedex().subscribe(pokedex => console.log(pokedex));
+  //constructor(pokemonDataService: PokemonDataService) {
+  constructor() {
+    //this.pokemonDataService = pokemonDataService;
+    //this.pokemonDataService.getPokedex().subscribe(pokedex => console.log(pokedex));
   }
 }
 
