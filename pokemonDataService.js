@@ -9,12 +9,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var di_1 = require('angular2/di');
+var angular2_1 = require('angular2/angular2');
 var localstorageService_1 = require('localstorageService');
+//import {Http, httpInjectables} from 'angular2/http';
 var PokemonDataService = (function () {
     //constructor($http: Http, lsService: LocalstorageService){
+    //constructor(@Inject(LocalstorageService) lsService){
     function PokemonDataService(lsService) {
         //this.$http = $http;
+        console.log("PokemonDataService : Constructor");
         this.lsService = lsService;
     }
     PokemonDataService.prototype.getPokedex = function () {
@@ -28,7 +31,7 @@ var PokemonDataService = (function () {
         //}
     };
     PokemonDataService = __decorate([
-        di_1.Injectable(), 
+        angular2_1.Injectable(), 
         __metadata('design:paramtypes', [localstorageService_1.LocalstorageService])
     ], PokemonDataService);
     return PokemonDataService;

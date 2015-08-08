@@ -12,16 +12,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var angular2_1 = require('angular2/angular2');
 var pokemonDataService_1 = require('pokemonDataService');
+var localstorageService_1 = require('localstorageService');
 // Annotation section
 var MyAppComponent = (function () {
     function MyAppComponent(pokemonDataService) {
-        this.pokemonDataService = pokemonDataService;
-        this.pokemonDataService.getPokedex().subscribe(function (pokedex) { return console.log(pokedex); });
+        console.log("App : Constructor");
+        //console.dir(ls);
+        //
+        //  this.pokemonDataService = pokemonDataService;
+        //  this.pokemonDataService.getPokedex().subscribe(pokedex => console.log(pokedex));
     }
     MyAppComponent = __decorate([
         angular2_1.Component({
             selector: 'my-app',
-            appInjector: [pokemonDataService_1.PokemonDataService]
+            appInjector: [localstorageService_1.LocalstorageService, pokemonDataService_1.PokemonDataService]
         }),
         angular2_1.View({
             template: '<h1>Hello {{ name }}</h1>'
