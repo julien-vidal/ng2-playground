@@ -1,13 +1,13 @@
 /// <reference path="typings/angular2/angular2.d.ts" />
 
-import {Component, View, bootstrap, Injectable} from 'angular2/angular2';
+import {Component, View, bootstrap} from 'angular2/angular2';
 import {PokemonDataService} from 'pokemonDataService';
 import {LocalstorageService} from 'localstorageService';
 
 // Annotation section
 @Component({
-  selector: 'my-app',
-  appInjector: [LocalstorageService, PokemonDataService]
+  selector: 'my-app' ,
+  appInjector: [PokemonDataService]
 })
 @View({
   template: '<h1>Hello {{ name }}</h1>'
@@ -15,12 +15,11 @@ import {LocalstorageService} from 'localstorageService';
 // Component controller
 class MyAppComponent {
   pokemonDataService:any;
-  constructor(pokemonDataService: PokemonDataService) {
-    console.log("App : Constructor");
-    //console.dir(ls);
-    //
-  //  this.pokemonDataService = pokemonDataService;
-  //  this.pokemonDataService.getPokedex().subscribe(pokedex => console.log(pokedex));
+
+  //constructor(pokemonDataService: PokemonDataService) {
+  constructor() {
+    //this.pokemonDataService = pokemonDataService;
+    //this.pokemonDataService.getPokedex().subscribe(pokedex => console.log(pokedex));
   }
 }
 
