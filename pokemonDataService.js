@@ -28,6 +28,7 @@ var PokemonDataService = (function () {
                 .map(function (pokedex) {
                 pokedex = pokedex.json();
                 self._sortPokedex(pokedex);
+                self._addPokemonNumber(pokedex);
                 self.lsService.setItem('pokedex', pokedex);
                 return self.lsService.getItem('pokedex');
             });
@@ -45,9 +46,16 @@ var PokemonDataService = (function () {
             var bUriArray = b.resource_uri.split('/');
             aUriArray.pop();
             bUriArray.pop();
-            var a = parseInt(aUriArray.pop(), 10);
-            var b = parseInt(bUriArray.pop(), 10);
-            return a - b;
+            var aNumber = parseInt(aUriArray.pop(), 10);
+            var bNumber = parseInt(bUriArray.pop(), 10);
+            return aNumber - bNumber;
+        });
+    };
+    PokemonDataService.prototype._addPokemonNumber = function (pokedex) {
+        pokedex.pokemon.forEach(function (pokemon) {
+            var pokemonUri = pokemon.resource_uri.split('/');
+            pokemonUri.pop();
+            pokemon.number = parseInt(pokemonUri.pop(), 10);
         });
     };
     PokemonDataService = __decorate([

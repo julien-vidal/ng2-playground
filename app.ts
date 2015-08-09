@@ -11,12 +11,21 @@ import {LocalstorageService} from 'localstorageService';
 })
 @View({
   template: `
-    <h2 class="header">Listing</h2>
-    <div class="collection">
-      <a class="collection-item" *ng-for="#pokemon of pokedex" href="{{pokemon.resource_uri}}">
-        {{pokemon.name}}
-      </a>
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <h2 class="header">Listing</h2>
+        <div class="collection">
+          <!-- Make this list scrollable -->
+          <!-- Add a way to filter it -->
+          <a class="collection-item" *ng-for="#pokemon of pokedex" href="{{pokemon.resource_uri}}">
+            <!-- Cache this images into localstorage and base64 them All !-->
+            <img src="http://www.pokemontrash.com/pokedex/images/x-y5g/{{pokemon.number}}.png" alt=""/><span class="badge">{{pokemon.number}}</span> {{pokemon.name}}
+          </a>
+        </div>
+      </div>
     </div>
+  </div>
   `,
   directives : [NgFor]
 })

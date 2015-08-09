@@ -30,7 +30,7 @@ var MyAppComponent = (function () {
             appInjector: [localstorageService_1.LocalstorageService, pokemonDataService_1.PokemonDataService]
         }),
         angular2_1.View({
-            template: "\n    <h2 class=\"header\">Listing</h2>\n    <div class=\"collection\">\n      <a class=\"collection-item\" *ng-for=\"#pokemon of pokedex\" href=\"{{pokemon.resource_uri}}\">\n        {{pokemon.name}}\n      </a>\n    </div>\n  ",
+            template: "\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col s12\">\n        <h2 class=\"header\">Listing</h2>\n        <div class=\"collection\">\n          <!-- Make this list scrollable -->\n          <!-- Add a way to filter it -->\n          <a class=\"collection-item\" *ng-for=\"#pokemon of pokedex\" href=\"{{pokemon.resource_uri}}\">\n            <!-- Cache this images into localstorage and base64 them All !-->\n            <img src=\"http://www.pokemontrash.com/pokedex/images/x-y5g/{{pokemon.number}}.png\" alt=\"\"/><span class=\"badge\">{{pokemon.number}}</span> {{pokemon.name}}\n          </a>\n        </div>\n      </div>\n    </div>\n  </div>\n  ",
             directives: [angular2_1.NgFor]
         }), 
         __metadata('design:paramtypes', [pokemonDataService_1.PokemonDataService])
