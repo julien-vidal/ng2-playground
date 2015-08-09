@@ -2,16 +2,15 @@ export class LocalstorageService {
   ls:any;
 
   constructor() {
-    console.log("LocalStorageService : Constructor");
     this.ls = localStorage;
   }
 
   getItem(key:string) {
-    return this.ls.getItem(key);
+    return JSON.parse(this.ls.getItem(key));
   }
 
   setItem(key:string, value: string) {
-    this.ls.setItem(key, value);
+    this.ls.setItem(key, JSON.stringify(value));
   }
 
   removeItem(key:string){

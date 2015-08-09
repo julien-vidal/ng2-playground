@@ -16,11 +16,13 @@ var localstorageService_1 = require('localstorageService');
 // Annotation section
 var MyAppComponent = (function () {
     function MyAppComponent(pokemonDataService) {
+        var _this = this;
         console.log("App : Constructor");
-        //console.dir(ls);
-        //
-        //  this.pokemonDataService = pokemonDataService;
-        //  this.pokemonDataService.getPokedex().subscribe(pokedex => console.log(pokedex));
+        var self = this;
+        this.pokemonDataService = pokemonDataService;
+        this.pokemonDataService.getPokedex().subscribe(function (pokedex) {
+            _this.pokedex = pokedex.pokemon;
+        });
     }
     MyAppComponent = __decorate([
         angular2_1.Component({
@@ -28,10 +30,11 @@ var MyAppComponent = (function () {
             appInjector: [localstorageService_1.LocalstorageService, pokemonDataService_1.PokemonDataService]
         }),
         angular2_1.View({
-            template: '<h1>Hello {{ name }}</h1>'
+            template: "\n    <h2 class=\"header\">Listing</h2>\n    <div class=\"collection\">\n      <a class=\"collection-item\" *ng-for=\"#pokemon of pokedex\" href=\"{{pokemon.resource_uri}}\">\n        {{pokemon.name}}\n      </a>\n    </div>\n  ",
+            directives: [angular2_1.NgFor]
         }), 
         __metadata('design:paramtypes', [pokemonDataService_1.PokemonDataService])
     ], MyAppComponent);
     return MyAppComponent;
 })();
-angular2_1.bootstrap(MyAppComponent);
+angular2_1.bootstrap(MyAppComponent, [angular2_1.httpInjectables]);

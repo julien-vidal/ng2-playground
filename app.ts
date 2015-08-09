@@ -1,6 +1,6 @@
 /// <reference path="typings/angular2/angular2.d.ts" />
 
-import {Component, View, bootstrap, Injectable} from 'angular2/angular2';
+import {Component, View, bootstrap, Injectable, httpInjectables, NgFor} from 'angular2/angular2';
 import {PokemonDataService} from 'pokemonDataService';
 import {LocalstorageService} from 'localstorageService';
 
@@ -10,18 +10,30 @@ import {LocalstorageService} from 'localstorageService';
   appInjector: [LocalstorageService, PokemonDataService]
 })
 @View({
-  template: '<h1>Hello {{ name }}</h1>'
+  template: `
+    <h2 class="header">Listing</h2>
+    <div class="collection">
+      <a class="collection-item" *ng-for="#pokemon of pokedex" href="{{pokemon.resource_uri}}">
+        {{pokemon.name}}
+      </a>
+    </div>
+  `,
+  directives : [NgFor]
 })
 // Component controller
 class MyAppComponent {
   pokemonDataService:any;
+  pokedex:any;
+
   constructor(pokemonDataService: PokemonDataService) {
     console.log("App : Constructor");
-    //console.dir(ls);
-    //
-  //  this.pokemonDataService = pokemonDataService;
-  //  this.pokemonDataService.getPokedex().subscribe(pokedex => console.log(pokedex));
+    var self = this;
+    this.pokemonDataService = pokemonDataService;
+
+    this.pokemonDataService.getPokedex().subscribe(pokedex => {
+      this.pokedex = pokedex.pokemon;
+    });
   }
 }
 
-bootstrap(MyAppComponent);
+bootstrap(MyAppComponent, [httpInjectables]);
